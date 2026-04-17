@@ -1,8 +1,11 @@
 package com.cadastrousuario.CadastroUsuario.Usuarios.Controller.Service;
 
+import com.cadastrousuario.CadastroUsuario.Curso.CursoModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -18,4 +21,9 @@ public class UsuarioModel {
     private String Email;
     private int idade;
     private String cpf;
+
+    // Um usuário tem um único curso
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    private CursoModel curso;
 }
