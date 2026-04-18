@@ -17,10 +17,19 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+
     private String Nome;
+
+    @Column(unique = true, nullable = true)
     private String Email;
+
     private int idade;
+
+    @Column(unique = true, nullable = true, length = 11)
     private String cpf;
+
+    @Column (name = "img_url")
+    private String imgUrl;
 
     // Um usuário tem um único curso
     @ManyToOne
