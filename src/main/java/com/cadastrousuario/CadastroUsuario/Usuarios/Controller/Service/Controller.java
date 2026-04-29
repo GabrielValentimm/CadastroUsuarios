@@ -1,13 +1,18 @@
 package com.cadastrousuario.CadastroUsuario.Usuarios.Controller.Service;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController // difinir que é um controller
 @RequestMapping // usamos para encontrar a nossa rota no mesmo lugar local:host
 public class Controller {
+
+    private UsuarioService usuarioService; //injetar dependencias e inicializar o construtor
+
+    public Controller(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     @GetMapping("/boasvindas") // pegar as informações e o nome da rota
     public String boasVindas(){
@@ -22,8 +27,8 @@ public class Controller {
 
     // Mostrar todos os usuarios(Read)
     @GetMapping("/todos")
-    public String mostrarTodosUsuarios(){
-        return "Mostrar Usuario";
+    public List<UsuarioModel> listaUsuarios(){
+        return usuarioService.listaUsuarios();
     }
 
     @GetMapping("/todosID")
@@ -31,6 +36,9 @@ public class Controller {
         return "Mostrar todos os Id do usuarios";
     }
 
-
+    @PutMapping("/alterarId")
+    public  String alterarUsuarioPorID(){
+        return "alterar usuarios por id";
+    }
 
 }

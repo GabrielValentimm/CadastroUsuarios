@@ -34,5 +34,6 @@ public class UsuarioModel {
     // Um usuário tem um único curso
     @ManyToOne
     @JoinColumn(name = "curso_id")
+
     private CursoModel curso;
 }

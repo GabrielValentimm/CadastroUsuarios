@@ -1,6 +1,7 @@
 package com.cadastrousuario.CadastroUsuario.Curso;
 
 import com.cadastrousuario.CadastroUsuario.Usuarios.Controller.Service.UsuarioModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +18,6 @@ public class CursoModel {
 
 
     @OneToMany(mappedBy = "curso") // Um Curso tem muitos usuários
+    @JsonIgnore // tira o loop de inicialização
     private List<UsuarioModel> usuario; // acessar a nossa outra tabela
 }
